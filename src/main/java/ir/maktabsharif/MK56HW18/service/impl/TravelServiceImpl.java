@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class TravelServiceImpl implements TravelService {
 
+    private TravelRepository ticketRepository;
+
     @Autowired
-    private TravelRepository travelRepository;
+    public TravelServiceImpl(TravelRepository ticketRepository) {
+        this.ticketRepository = ticketRepository;
+    }
 
 }

@@ -8,7 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TicketServiceImpl implements TicketService {
 
-    @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    public TicketServiceImpl(TicketRepository ticketRepository) {
+        this.ticketRepository = ticketRepository;
+    }
 }

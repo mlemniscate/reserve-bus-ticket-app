@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
+    private UserRepository ticketRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository ticketRepository) {
+        this.ticketRepository = ticketRepository;
+    }
 
 }
