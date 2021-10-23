@@ -1,9 +1,7 @@
 package ir.maktabsharif.MK56HW18.model;
 
 import ir.maktabsharif.MK56HW18.model.base.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -12,6 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = Ticket.TABLE_NAME)
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
