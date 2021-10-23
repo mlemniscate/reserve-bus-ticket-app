@@ -3,9 +3,9 @@ package ir.maktabsharif.MK56HW18.model;
 import ir.maktabsharif.MK56HW18.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = User.TABLE_NAME)
@@ -32,5 +32,9 @@ public class User extends BaseEntity<Long> {
     private String lastName;
     @Column(name = EMAIL, nullable = false)
     private String email;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Ticket> tickets = new ArrayList<>();
 
 }

@@ -3,9 +3,9 @@ package ir.maktabsharif.MK56HW18.model;
 import ir.maktabsharif.MK56HW18.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = Travel.TABLE_NAME)
@@ -19,5 +19,9 @@ public class Travel extends BaseEntity<Long> {
 
     @Embedded
     private TravelInformation travelInformation;
+
+    @OneToMany
+    @JoinColumn(name = "travel_id")
+    private List<Ticket> tickets = new ArrayList<>();
 
 }
