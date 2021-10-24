@@ -32,4 +32,9 @@ public class UserServiceImpl implements UserService {
         else if(!byUsername.getPassword().equals(user.getPassword())) return Status.FAILURE;
         else return Status.SUCCESS;
     }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
 }

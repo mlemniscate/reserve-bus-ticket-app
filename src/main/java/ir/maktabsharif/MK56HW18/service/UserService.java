@@ -7,4 +7,6 @@ public interface UserService {
     User addUser(User user);
 
     Status loginUser(User user);
+
+    User getUserByUsername(String username);
 }
