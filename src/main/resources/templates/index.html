@@ -18,6 +18,7 @@
     <title>رزرو بلیط اتوبوس</title>
   </head>
   <body class="bg-dark">
+    <!-- Navbar -->
     <div class="container-fluid m-0 p-0">
       <nav class="navbar navbar-expand navbar-dark bg-dark" style="direction: rtl;">
         <img class="rounded-circle" src="../static/big-bus-logo-silhouette-vector.jpg" width="100" height="100" alt="Company Logo"/>
@@ -38,16 +39,17 @@
         </ul>
       </nav>
     </div>
+    <!-- Login Form -->
     <div class="container text-center login-container mt-5">
       <form class="m-auto bg-info rounded-lg p-5" style="direction: rtl;">
         <div class="form-group">
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="نام کاربری">
+          <input name="username" type="text" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="نام کاربری">
         </div>
         <div class="form-group">
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="کلمه عبور">
+          <input name="password" type="password" class="form-control" id="loginPassword" placeholder="کلمه عبور">
         </div>
         <a href="#" class="text-white">رمز عبور خود را فراموش کرده‌ام!</a><br>
-        <button form="login-form" class="btn btn-lg btn-primary mt-5" type="submit">ورود</button>
+        <button id="login-btn" form="login-form" class="btn btn-lg btn-primary mt-5" type="submit">ورود</button>
       </form>
     </div>
     <script
@@ -65,6 +67,7 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
