@@ -10,8 +10,9 @@ import java.time.LocalTime;
 @Getter
 @Setter
 public class TravelInfo {
-    private String initialPoint;
+    private String initial;
     private String destination;
-    private String travelDate;
-    private LocalTime travelTime;
+    private String date;
+    private LocalTime time;
+    private Long id;
 }

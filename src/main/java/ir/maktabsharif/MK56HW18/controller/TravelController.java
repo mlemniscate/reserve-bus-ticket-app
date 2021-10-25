@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -32,9 +33,11 @@ public class TravelController {
                     item.getTravelInformation().getInitialPoint(),
                     item.getTravelInformation().getDestination(),
                     item.getTravelInformation().getTravelDate(),
-                    item.getTravelInformation().getTravelTime()
+                    item.getTravelInformation().getTravelTime(),
+                    item.getId()
             ));
         });
+        travelInfoList.sort(Comparator.comparing(TravelInfo::getTime));
         return travelInfoList;
     }
 
