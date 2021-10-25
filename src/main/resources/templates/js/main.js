@@ -20,7 +20,9 @@ document.querySelector('#login-btn').addEventListener('click', (event) => {
     if (xhr.readyState === 4) {
       console.log(xhr.responseText);
       if (xhr.responseText == JSON.stringify('FAILURE'))
-        alert('Your usernaem or password is wrong. please try again!');
+        alert(
+          'نام کاربری یا کلمه عبور شما اشتباه است. لطفا دوباره امتحان کنید.'
+        );
       else {
         sessionStorage.setItem('username', JSON.parse(data).username);
         window.location.href = 'user.html';

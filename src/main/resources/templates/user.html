@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      type="text/css"
+      rel="stylesheet"
+      href="../lib/date_picker/jalalidatepicker.min.css"
+    />
+    <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -32,19 +37,80 @@
           alt="Company Logo"
         />
         <a href="#" class="navbar-brand">شرکت اتوبوس رانی سفیر</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a id="logout" class="nav-link" href="#"
+              ><i class="bi bi-box-arrow-left"></i> خروج</a
+            >
+          </li>
+          <li>
+            <a id="logout" class="nav-link" href="#"
+              ><i class="bi bi-search"></i> مشاهده بلیط های خریداری شده</a
+            >
+          </li>
+        </ul>
         <div class="mr-auto order-0">
           <a id="userFirstLastName" class="navbar-brand mx-auto" href="#"></a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target=".dual-collapse2"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
         </div>
       </nav>
+      <!-- Search Bar -->
+      <div class="search container mt-5 p-3 bg-dark rounded">
+        <div class="row mb-2">
+          <div class="col"></div>
+          <div class="col text-white text-right">تاریخ</div>
+          <div class="col text-white text-right">مقصد</div>
+          <div class="col text-white text-right">مبدا</div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button id="search" class="height-2 w-100 rounded btn btn-primary">
+              جست و جو
+            </button>
+          </div>
+          <div class="col">
+            <input
+              class="height-2 rounded w-100"
+              data-jdp
+              type="text"
+              name="date"
+              id="date"
+              autocomplete="off"
+              readonly
+            />
+          </div>
+          <div class="col">
+            <select class="w-100 rounded height-2" name="cars" id="cars">
+              <option value="تهران" id="">تهران</option>
+              <option value="تبریز" id="">تبریز</option>
+              <option value="اصفهان" id="">اصفهان</option>
+              <option value="رشت" id="">رشت</option>
+              <option value="شیراز" id="">شیراز</option>
+              <option value="مشهد" id="">مشهد</option>
+              <option value="استانبول" id="">استانبول</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="w-100 rounded height-2" name="cars" id="cars">
+              <option value="تهران" id="">تهران</option>
+              <option value="تبریز" id="">تبریز</option>
+              <option value="اصفهان" id="">اصفهان</option>
+              <option value="رشت" id="">رشت</option>
+              <option value="شیراز" id="">شیراز</option>
+              <option value="مشهد" id="">مشهد</option>
+              <option value="استانبول" id="">استانبول</option>
+            </select>
+          </div>
+        </div>
+      </div>
     </div>
+    <div
+      id="search-result-box"
+      class="search container mt-5 py-5 bg-dark rounded"
+    ></div>
+    <script
+      type="text/javascript"
+      src="../lib/date_picker/jalalidatepicker.min.js"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

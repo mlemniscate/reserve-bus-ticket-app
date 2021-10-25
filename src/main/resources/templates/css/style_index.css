@@ -18,3 +18,15 @@ form input {
 .input-group {
   width: 80% !important;
 }
+
+.flex-20 {
+  flex: 20%;
+}
+
+.flex-30 {
+  flex: 30%;
+}
+
+.height-2 {
+  height: 3rem;
+}
