@@ -1,11 +1,13 @@
 package ir.maktabsharif.MK56HW18.model;
 
+import lombok.Getter;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Embeddable
+@Getter
 public class TravelInformation {
 
     public static final String INITIAL_POINT = "initial_point";
@@ -18,7 +20,7 @@ public class TravelInformation {
     @Column(name = DESTINATION, nullable = false)
     private String destination;
     @Column(name = TRAVEL_DATE, nullable = false)
-    private LocalDate travelDate;
+    private String travelDate;
     @Column(name = TRAVEL_TIME, nullable = false)
     private LocalTime travelTime;
 
