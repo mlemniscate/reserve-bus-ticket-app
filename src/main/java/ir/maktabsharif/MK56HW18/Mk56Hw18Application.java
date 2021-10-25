@@ -10,4 +10,5 @@ public class Mk56Hw18Application {
 		SpringApplication.run(Mk56Hw18Application.class, args);
 	}
 
+
 }

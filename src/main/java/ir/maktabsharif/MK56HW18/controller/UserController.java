@@ -1,5 +1,6 @@
 package ir.maktabsharif.MK56HW18.controller;
 
+import ir.maktabsharif.MK56HW18.controller.DTO.TicketAddInfo;
 import ir.maktabsharif.MK56HW18.controller.DTO.UserWithoutPassword;
 import ir.maktabsharif.MK56HW18.controller.enums.Status;
 import ir.maktabsharif.MK56HW18.model.User;
@@ -38,6 +39,12 @@ public class UserController {
                 userByUsername.getLastName(),
                 userByUsername.getEmail()
         );
+    }
+
+    @PostMapping("/user/buy-ticket")
+    @CrossOrigin
+    public void registerTicket(@RequestBody TicketAddInfo ticketَAdd) {
+        userService.addTicket(ticketَAdd);
     }
 
 }

@@ -78,22 +78,37 @@ document.querySelector('#search').addEventListener('click', (event) => {
   }
 });
 
+// buy ticket
 function buyTicket(id) {
   sessionStorage.setItem('travel_id', id);
 }
 
 function buyTicketAccept() {
-  let input = document.querySelector('#fullName');
+  let input = document.querySelector('#ownerName');
   if (input.value != '') {
     let travelId = sessionStorage.getItem('travel_id');
     let username = sessionStorage.getItem('username');
-    let fullName = input.value;
+    let ownerName = input.value;
     let gender = document.querySelector('input[name="gender"]:checked').value;
-    console.log(travelId);
-    console.log(username);
-    console.log(fullName);
-    console.log(gender);
+    let data = `{
+      {
+        "travelId": "${travelId}",
+        "username": "${username}",
+        "ownerName": "${ownerName}",
+        "gender": "${gender}"
+      }
+    }`;
+    saveBuyTicket(data);
   } else {
     alert('تمامی فیلدها را پر کنید!');
   }
+}
+
+function saveBuyTicket(data) {
+  var url = 'http://localhost:8080/user/buy-ticket';
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', url);
+  xhr.setRequestHeader('Accept', 'application/json');
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.send(data);
 }

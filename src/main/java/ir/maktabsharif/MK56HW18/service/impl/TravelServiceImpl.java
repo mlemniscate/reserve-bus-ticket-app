@@ -20,7 +20,7 @@ public class TravelServiceImpl implements TravelService {
 
     @Override
     public List<Travel> getTravelsByInfo(String initial, String destination, String date) {
-        return ticketRepository.findAllByTravelInformation_InitialPointAndTravelInformation_DestinationAndTravelInformation_TravelDate(
+        return ticketRepository.findAllByInitialPointAndDestinationAndTravelDate(
                 initial,
                 destination,
                 date

@@ -8,5 +8,5 @@ import java.util.List;
 
 @Repository
 public interface TravelRepository extends JpaRepository<Travel, Long> {
-    List<Travel> findAllByTravelInformation_InitialPointAndTravelInformation_DestinationAndTravelInformation_TravelDate(String initial, String destination, String date);
+    List<Travel> findAllByInitialPointAndDestinationAndTravelDate(String initial, String destination, String date);
 }

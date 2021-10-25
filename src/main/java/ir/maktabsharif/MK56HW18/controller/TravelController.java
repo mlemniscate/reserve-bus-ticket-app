@@ -30,10 +30,10 @@ public class TravelController {
         List<TravelInfo> travelInfoList = new ArrayList<>();
         travelsByInfo.forEach(item -> {
             travelInfoList.add(new TravelInfo(
-                    item.getTravelInformation().getInitialPoint(),
-                    item.getTravelInformation().getDestination(),
-                    item.getTravelInformation().getTravelDate(),
-                    item.getTravelInformation().getTravelTime(),
+                    item.getInitialPoint(),
+                    item.getDestination(),
+                    item.getTravelDate(),
+                    item.getTravelTime(),
                     item.getId()
             ));
         });

@@ -1,6 +1,5 @@
 package ir.maktabsharif.MK56HW18.service.impl;
 
-import ir.maktabsharif.MK56HW18.model.Ticket;
 import ir.maktabsharif.MK56HW18.repository.TicketRepository;
 import ir.maktabsharif.MK56HW18.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +15,5 @@ public class TicketServiceImpl implements TicketService {
         this.ticketRepository = ticketRepository;
     }
 
-    @Override
-    public void addTicket(Ticket ticket) {
-        this.ticketRepository.save(ticket);
-    }
+
 }

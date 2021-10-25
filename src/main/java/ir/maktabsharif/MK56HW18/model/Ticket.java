@@ -3,10 +3,7 @@ package ir.maktabsharif.MK56HW18.model;
 import ir.maktabsharif.MK56HW18.model.base.BaseEntity;
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = Ticket.TABLE_NAME)
@@ -24,8 +21,10 @@ public class Ticket extends BaseEntity<Long> {
     private String ownerName;
     @Column(name = GENDER, nullable = false)
     private String gender;
-    @Embedded
-    private TravelInformation travelInformation;
+
+    @ManyToOne
+    @JoinColumn(name = "travel_id")
+    private Travel travel;
 
 
 }

@@ -33,7 +33,7 @@ public class User extends BaseEntity<Long> {
     @Column(name = EMAIL, nullable = false)
     private String email;
 
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "user_id")
     private List<Ticket> tickets = new ArrayList<>();
 
