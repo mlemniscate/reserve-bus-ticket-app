@@ -52,7 +52,8 @@ public class UserServiceImpl implements UserService {
                 new Ticket(
                         ticketAddInfo.getOwnerName(),
                         ticketAddInfo.getGender(),
-                        travel
+                        travel,
+                        user
                 )
         );
         userRepository.save(user);

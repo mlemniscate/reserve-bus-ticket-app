@@ -26,5 +26,7 @@ public class Ticket extends BaseEntity<Long> {
     @JoinColumn(name = "travel_id")
     private Travel travel;
 
-
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

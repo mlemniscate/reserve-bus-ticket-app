@@ -35,7 +35,7 @@ dateInput.addEventListener('focus', (event) => {
 let date = document.querySelector('#date');
 let destination = document.querySelector('#destination');
 let initial = document.querySelector('#initial');
-let searchButton = document.querySelector('#search-result-box');
+let searchBox = document.querySelector('#search-result-box');
 let travelsData;
 
 function searchTravels() {
@@ -43,7 +43,7 @@ function searchTravels() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       travelsData = JSON.parse(this.responseText);
-      searchButton.innerHTML = '';
+      searchBox.innerHTML = '';
       for (let i = 0; i < travelsData.length; i++) {
         const element = travelsData[i];
         let sample = `<div class="card mt-3" style="width: 20rem">
@@ -59,7 +59,7 @@ function searchTravels() {
             <a onclick="buyTicket(${element.id})" href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">خرید</a>
           </div>
         </div>`;
-        searchButton.innerHTML += sample;
+        searchBox.innerHTML += sample;
       }
     }
   };
@@ -91,14 +91,16 @@ function buyTicketAccept() {
     let ownerName = input.value;
     let gender = document.querySelector('input[name="gender"]:checked').value;
     let data = `{
-      {
         "travelId": "${travelId}",
         "username": "${username}",
         "ownerName": "${ownerName}",
         "gender": "${gender}"
-      }
-    }`;
+      }`;
     saveBuyTicket(data);
+    sessionStorage.setItem('travelId', travelId);
+    sessionStorage.setItem('ownerName', ownerName);
+    sessionStorage.setItem('gender', gender);
+    window.location.href = 'successTicketBuy.html';
   } else {
     alert('تمامی فیلدها را پر کنید!');
   }
@@ -111,4 +113,70 @@ function saveBuyTicket(data) {
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(data);
+}
+
+// Show tickets
+document.querySelector('#showTickets').addEventListener('click', (event) => {
+  searchTickets();
+});
+
+let userTickets;
+function searchTickets() {
+  const xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      userTickets = JSON.parse(this.responseText);
+      searchBox.innerHTML = '';
+      for (let i = 0; i < userTickets.length; i++) {
+        const element = userTickets[i];
+        let sample = `<div class="card mt-3" style="width: 20rem">
+          <div class="card-body text-center">
+            <h5 class="card-title">
+              بلیط
+            </h5>
+            <p class="card-text">
+              تاریخ <i class="bi bi-arrow-left"></i> ${element.date} <br />
+              شناسه بلیط <i class="bi bi-arrow-left"></i> ${element.ticketId}
+            </p>
+            <a onclick="showTicket(${i})" href="#" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalTicket">مشاهده بلیط</a>
+          </div>
+        </div>`;
+        searchBox.innerHTML += sample;
+      }
+    }
+  };
+  xhttp.open(
+    'GET',
+    `http://localhost:8080/ticket/user-tickets?username=${sessionStorage.getItem(
+      'username'
+    )}`
+  );
+  xhttp.send();
+}
+
+function showTicket(ticketIndex) {
+  sessionStorage.setItem('ticketIndex', ticketIndex);
+  document.querySelector(
+    '#modalShowTicket'
+  ).innerHTML = `<div class="text-center">
+  <h5 class="card-title">
+    ${userTickets[ticketIndex].initial} <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].destination}
+  </h5>
+  <p class="card-text">
+    شناسه بلیط <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].ticketId} <br />
+    نام <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].name} <br />
+    جنسیت <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].gender} <br />
+    تاریخ حرکت <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].date} <br />
+    ساعت حرکت <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].time} <br />
+    شناسه سفر <i class="bi bi-arrow-left"></i> ${userTickets[ticketIndex].travelId} <br />
+  </p>
+</div>`;
+}
+
+// Delete Ticket
+function deleteTicket() {
+  let ticketIndex = sessionStorage.getItem('ticketIndex');
+  if (confirm('آیا از لغو بلیط مطمئن هستید؟')) {
+    let ticketId = console.log(userTickets[ticketIndex].ticketId);
+  }
 }

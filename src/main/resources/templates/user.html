@@ -44,7 +44,7 @@
             >
           </li>
           <li>
-            <a id="logout" class="nav-link" href="#"
+            <a id="showTickets" class="nav-link" href="#"
               ><i class="bi bi-search"></i> مشاهده بلیط های خریداری شده</a
             >
           </li>
@@ -196,6 +196,51 @@
               class="btn btn-primary"
             >
               تایید
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show Ticket -->
+    <!-- Modal -->
+    <div
+      id="exampleModalTicket"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLiveLabel"
+      aria-hidden="true"
+      style="display: none"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLiveLabel">بلیط اتوبوس</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div id="modalShowTicket" class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              بازگشت
+            </button>
+            <button
+              onclick="deleteTicket()"
+              type="button"
+              class="btn btn-primary"
+            >
+              لغو بلیط
             </button>
           </div>
         </div>

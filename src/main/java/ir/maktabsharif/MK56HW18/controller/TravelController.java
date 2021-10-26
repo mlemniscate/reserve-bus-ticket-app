@@ -40,5 +40,4 @@ public class TravelController {
         travelInfoList.sort(Comparator.comparing(TravelInfo::getTime));
         return travelInfoList;
     }
-
 }
