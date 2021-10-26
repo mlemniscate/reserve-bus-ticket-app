@@ -40,17 +40,18 @@
     ></script>
     <script>
       let gender = sessionStorage.getItem('gender') == 'زن' ? 'خانم' : 'آقای';
-      let travelId = sessionStorage.getItem('travelId');
+      let ticketId = sessionStorage.getItem('ticketId');
+      console.log(ticketId);
       let ownerName = sessionStorage.getItem('ownerName');
       $('.message').html(
-        `${gender} ${ownerName}، خرید بلیط شما با موفقیت انجام شد<br>شناسه بلیط: ${travelId}
+        `${gender} ${ownerName}، خرید بلیط شما با موفقیت انجام شد<br>شناسه بلیط: ${ticketId}
         <div class='mt-5' id="downcounter"></div>`
       );
       let counter = 10;
       setInterval(function () {
         if (counter < 0) {
           sessionStorage.removeItem('gender');
-          sessionStorage.removeItem('travelId');
+          sessionStorage.removeItem('ticketId');
           sessionStorage.removeItem('ownerName');
           window.location.href = 'user.html';
         } else {

@@ -5,6 +5,7 @@ import ir.maktabsharif.MK56HW18.controller.enums.Status;
 import ir.maktabsharif.MK56HW18.model.Ticket;
 import ir.maktabsharif.MK56HW18.model.Travel;
 import ir.maktabsharif.MK56HW18.model.User;
+import ir.maktabsharif.MK56HW18.repository.TicketRepository;
 import ir.maktabsharif.MK56HW18.repository.TravelRepository;
 import ir.maktabsharif.MK56HW18.repository.UserRepository;
 import ir.maktabsharif.MK56HW18.service.UserService;
@@ -18,11 +19,14 @@ public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
     private TravelRepository travelRepository;
+    private TicketRepository ticketRepository;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, TravelRepository travelRepository) {
+    public UserServiceImpl(UserRepository userRepository, TravelRepository travelRepository,
+                           TicketRepository ticketRepository) {
         this.userRepository = userRepository;
         this.travelRepository = travelRepository;
+        this.ticketRepository = ticketRepository;
     }
 
     @Override
@@ -45,17 +49,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addTicket(TicketAddInfo ticketAddInfo) {
+    public Ticket addTicket(TicketAddInfo ticketAddInfo) {
         User user = userRepository.findByUsername(ticketAddInfo.getUsername());
         Travel travel = travelRepository.getById(ticketAddInfo.getTravelId());
-        user.getTickets().add(
-                new Ticket(
-                        ticketAddInfo.getOwnerName(),
-                        ticketAddInfo.getGender(),
-                        travel,
-                        user
-                )
+        Ticket ticket = new Ticket(
+                ticketAddInfo.getOwnerName(),
+                ticketAddInfo.getGender(),
+                travel,
+                user
         );
+        Ticket save = ticketRepository.save(ticket);
+        user.getTickets().add(save);
         userRepository.save(user);
+        return save;
     }
 }

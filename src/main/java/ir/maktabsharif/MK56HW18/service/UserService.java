@@ -2,6 +2,7 @@ package ir.maktabsharif.MK56HW18.service;
 
 import ir.maktabsharif.MK56HW18.controller.DTO.TicketAddInfo;
 import ir.maktabsharif.MK56HW18.controller.enums.Status;
+import ir.maktabsharif.MK56HW18.model.Ticket;
 import ir.maktabsharif.MK56HW18.model.User;
 
 public interface UserService {
@@ -11,5 +12,5 @@ public interface UserService {
 
     User getUserByUsername(String username);
 
-    void addTicket(TicketAddInfo ticketAddInfo);
+    Ticket addTicket(TicketAddInfo ticketAddInfo);
 }

@@ -3,6 +3,7 @@ package ir.maktabsharif.MK56HW18.controller;
 import ir.maktabsharif.MK56HW18.controller.DTO.TicketAddInfo;
 import ir.maktabsharif.MK56HW18.controller.DTO.UserWithoutPassword;
 import ir.maktabsharif.MK56HW18.controller.enums.Status;
+import ir.maktabsharif.MK56HW18.model.Ticket;
 import ir.maktabsharif.MK56HW18.model.User;
 import ir.maktabsharif.MK56HW18.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,9 @@ public class UserController {
 
     @PostMapping("/user/buy-ticket")
     @CrossOrigin
-    public void registerTicket(@RequestBody TicketAddInfo ticketَAdd) {
-        userService.addTicket(ticketَAdd);
+    public Long registerTicket(@RequestBody TicketAddInfo ticketَAdd) {
+        Ticket ticket = userService.addTicket(ticketَAdd);
+        return ticket.getId();
     }
 
 }

@@ -96,11 +96,10 @@ function buyTicketAccept() {
         "ownerName": "${ownerName}",
         "gender": "${gender}"
       }`;
-    saveBuyTicket(data);
-    sessionStorage.setItem('travelId', travelId);
+
     sessionStorage.setItem('ownerName', ownerName);
     sessionStorage.setItem('gender', gender);
-    window.location.href = 'successTicketBuy.html';
+    saveBuyTicket(data);
   } else {
     alert('تمامی فیلدها را پر کنید!');
   }
@@ -112,6 +111,14 @@ function saveBuyTicket(data) {
   xhr.open('POST', url);
   xhr.setRequestHeader('Accept', 'application/json');
   xhr.setRequestHeader('Content-Type', 'application/json');
+  console.log('Milad');
+  xhr.onreadystatechange = function () {
+    if (this.readyState == 4) {
+      console.log(this.responseText);
+      sessionStorage.setItem('ticketId', this.responseText);
+      window.location.href = 'successTicketBuy.html';
+    }
+  };
   xhr.send(data);
 }
 
