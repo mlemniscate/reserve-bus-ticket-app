@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface TicketService {
     List<UserTicket> getAllUserTickets(String username);
+
+    void deleteTicket(Long id);
 }

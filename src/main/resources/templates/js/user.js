@@ -177,6 +177,10 @@ function showTicket(ticketIndex) {
 function deleteTicket() {
   let ticketIndex = sessionStorage.getItem('ticketIndex');
   if (confirm('آیا از لغو بلیط مطمئن هستید؟')) {
-    let ticketId = console.log(userTickets[ticketIndex].ticketId);
+    let ticketId = userTickets[ticketIndex].ticketId;
+    var url = `http://localhost:8080/ticket/remove?id=${ticketId}`;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url);
+    xhr.send();
   }
 }

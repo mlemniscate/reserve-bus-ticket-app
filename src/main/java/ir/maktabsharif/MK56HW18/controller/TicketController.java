@@ -26,4 +26,10 @@ public class TicketController {
         return ticketService.getAllUserTickets(username);
     }
 
+    @GetMapping("/ticket/remove")
+    @CrossOrigin
+    public void deleteTicket(@RequestParam Long id) {
+        ticketService.deleteTicket(id);
+    }
+
 }
