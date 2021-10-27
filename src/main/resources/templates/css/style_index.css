@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('https://i2.wp.com/www.touristisrael.com/wp-content/uploads/2010/01/WhatsApp-Image-2021-04-11-at-11.40.03-1.jpeg?fit=1024%2C682&ssl=1');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form {
+  max-width: 488px;
+  background-color: white;
+}
+
+form input {
+  height: 3rem;
+}
+
+.input-group {
+  width: 80% !important;
+}
+
+.flex-20 {
+  flex: 20%;
+}
+
+.flex-30 {
+  flex: 30%;
+}
+
+.height-2 {
+  height: 3rem;
+}

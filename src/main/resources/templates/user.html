@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../lib/date_picker/jalalidatepicker.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style_index.css" />
+    <title>رزرو بلیط اتوبوس</title>
+  </head>
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <div class="container-fluid m-0 p-0">
+      <nav
+        class="navbar navbar-expand navbar-dark bg-dark"
+        style="direction: rtl"
+      >
+        <img
+          class="rounded-circle"
+          src="../static/big-bus-logo-silhouette-vector.jpg"
+          width="100"
+          height="100"
+          alt="Company Logo"
+        />
+        <a href="#" class="navbar-brand">شرکت اتوبوس رانی سفیر</a>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a id="logout" class="nav-link" href="#"
+              ><i class="bi bi-box-arrow-left"></i> خروج</a
+            >
+          </li>
+          <li>
+            <a id="showTickets" class="nav-link" href="#"
+              ><i class="bi bi-search"></i> مشاهده بلیط های خریداری شده</a
+            >
+          </li>
+        </ul>
+        <div class="mr-auto order-0">
+          <a id="userFirstLastName" class="navbar-brand mx-auto" href="#"></a>
+        </div>
+      </nav>
+      <!-- Search Bar -->
+      <div class="search container mt-5 p-3 bg-dark rounded">
+        <div class="row mb-2">
+          <div class="col"></div>
+          <div class="col text-white text-right">تاریخ</div>
+          <div class="col text-white text-right">مقصد</div>
+          <div class="col text-white text-right">مبدا</div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button id="search" class="height-2 w-100 rounded btn btn-primary">
+              جست و جو
+            </button>
+          </div>
+          <div class="col">
+            <input
+              class="height-2 rounded w-100"
+              data-jdp
+              type="text"
+              name="date"
+              id="date"
+              autocomplete="off"
+              readonly
+            />
+          </div>
+          <div class="col">
+            <select class="w-100 rounded height-2" name="cars" id="destination">
+              <option value="تهران" id="">تهران</option>
+              <option value="تبریز" id="">تبریز</option>
+              <option value="اصفهان" id="">اصفهان</option>
+              <option value="رشت" id="">رشت</option>
+              <option value="شیراز" id="">شیراز</option>
+              <option value="مشهد" id="">مشهد</option>
+              <option value="استانبول" id="">استانبول</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="w-100 rounded height-2" name="cars" id="initial">
+              <option value="تهران" id="">تهران</option>
+              <option value="تبریز" id="">تبریز</option>
+              <option value="اصفهان" id="">اصفهان</option>
+              <option value="رشت" id="">رشت</option>
+              <option value="شیراز" id="">شیراز</option>
+              <option value="مشهد" id="">مشهد</option>
+              <option value="استانبول" id="">استانبول</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      id="search-result-box"
+      class="
+        search
+        container
+        mt-5
+        p-5
+        bg-dark
+        rounded
+        d-flex
+        justify-content-between
+        flex-wrap
+      "
+      style="direction: rtl"
+    ></div>
+
+    <!-- Buy Ticket -->
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">خرید بلیط</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Modal body form -->
+            <div class="form-group">
+              <label for="ownerName"
+                >نام و نام‌خانوادگی صاحب بلیط را وارد کنید:
+              </label>
+              <input
+                type="text"
+                class="form-control-lg"
+                id="ownerName"
+                aria-describedby="emailHelp"
+                placeholder="نام و نام خانوادگی"
+              />
+            </div>
+            <div class="d-flex">
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="women-radio"
+                  value="زن"
+                  checked
+                />
+                <label class="form-check-label tlg" for="women-radio">
+                  زن
+                </label>
+              </div>
+              <div class="form-check m-2">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="gender"
+                  id="men-radio"
+                  value="مرد"
+                />
+                <label class="form-check-label" for="men-radio"> مرد </label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              لغو خرید
+            </button>
+            <button
+              onclick="buyTicketAccept()"
+              type="button"
+              class="btn btn-primary"
+            >
+              تایید
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Show Ticket -->
+    <!-- Modal -->
+    <div
+      id="exampleModalTicket"
+      class="modal fade"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLiveLabel"
+      aria-hidden="true"
+      style="display: none"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLiveLabel">بلیط اتوبوس</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div id="modalShowTicket" class="modal-body"></div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              بازگشت
+            </button>
+            <button
+              onclick="deleteTicket()"
+              type="button"
+              class="btn btn-primary"
+            >
+              لغو بلیط
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      type="text/javascript"
+      src="../lib/date_picker/jalalidatepicker.min.js"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/user.js"></script>
+  </body>
+</html>

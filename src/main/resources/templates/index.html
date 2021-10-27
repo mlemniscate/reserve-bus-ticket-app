@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/style_index.css" />
+    <title>رزرو بلیط اتوبوس</title>
+  </head>
+  <body class="bg-dark">
+    <!-- Navbar -->
+    <div class="container-fluid m-0 p-0">
+      <nav class="navbar navbar-expand navbar-dark bg-dark" style="direction: rtl;">
+        <img class="rounded-circle" src="../static/big-bus-logo-silhouette-vector.jpg" width="100" height="100" alt="Company Logo"/>
+        <a href="#" class="navbar-brand">شرکت اتوبوس رانی سفیر</a>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a class="nav-link" href="#"
+              ><i class="bi bi-person-fill"></i></span> ثبت نام</a
+            >
+          </li>
+          <span class="" style="width: 1px; background-color: darkgray; margin: 0 1rem;"></span>
+          <li>
+            <a class="nav-link" href="#"
+              ><i class="bi bi-box-arrow-in-right"></i></span> ورود</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Login Form -->
+    <div class="container text-center login-container mt-5">
+      <form class="m-auto bg-dark rounded-lg p-5" style="direction: rtl;">
+        <div class="form-group">
+          <input name="username" type="text" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="نام کاربری">
+        </div>
+        <div class="form-group">
+          <input name="password" type="password" class="form-control" id="loginPassword" placeholder="کلمه عبور">
+        </div>
+        <a href="#" class="text-white">رمز عبور خود را فراموش کرده‌ام!</a><br>
+        <button id="login-btn" form="login-form" class="btn btn-lg btn-primary mt-5" type="submit">ورود</button>
+      </form>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
